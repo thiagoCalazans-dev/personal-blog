@@ -7,7 +7,7 @@ export const ProfileCardContainer = styled('div', {
     gap: "2rem",
     marginTop: "-5.5rem",
     borderRadius: "10px",
-    border: "1px solid $orange10",
+    boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
 
     img: {
         height: "9.25rem",
@@ -59,14 +59,17 @@ export const ProfileContent = styled("aside", {
         alignItems: "center",
         textDecoration: "none",         
         gap: "0.5rem",
-        color: "$grey9",
+        color: "$violet12",
         fontSize: "0.75rem",
+        fontWeight: "bold",
         lineHeight: "1.6",                
         cursor: "pointer",
         borderBottom: "1px solid transparent",
      
+     
         "&:hover": {
-            borderBottom: "1px solid $orange10"
+            color: "$orange11",
+            borderBottom: "1px solid $orange11"
         }, 
 
     } 

@@ -1,5 +1,5 @@
 
-import { sage, orange, green, sageDark, orangeDark, greenDark } from "@radix-ui/colors"
+import { sage, orange,  sageDark, orangeDark,  violet, violetDark } from "@radix-ui/colors"
 import * as react from "@stitches/react"
 
 export const {config, styled, css, globalCss, keyframes, getCssText, theme, createTheme} = react.createStitches({
@@ -7,14 +7,8 @@ export const {config, styled, css, globalCss, keyframes, getCssText, theme, crea
         colors: {
        ...sage,
        ...orange,
-       ...green
+       ...violet
         },
-        fontSizes: {
-          md: "1.125rem",
-          lg: "1.25rem",
-          xl: "1.5rem",
-          '2xl': "2rem",
-        }
     }
     
 })
@@ -23,6 +17,6 @@ const darkTheme = createTheme({
     colors: {
       ...sageDark,
       ...orangeDark,
-      ...greenDark,
+      ...violetDark,
     },
   });

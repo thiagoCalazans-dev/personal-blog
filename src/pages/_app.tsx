@@ -8,7 +8,7 @@ globalStyles();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Container>
-      <Header>placeholder</Header>
+      <Header />
       <Component {...pageProps} />
     </Container>
   );

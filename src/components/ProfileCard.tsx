@@ -8,8 +8,13 @@ import {
   ProfileContent,
 } from "../../styles/components/ProfileCard";
 import Image from "next/image";
+import { Profile } from "../pages";
 
-export function ProfileCard() {
+interface ProfileCardProps {
+  profile: Profile
+}
+
+export function ProfileCard({ profile }: ProfileCardProps) {
   return (
     <ProfileCardContainer>
       <Image
@@ -20,22 +25,21 @@ export function ProfileCard() {
       />
       <ProfileContent>
         <header>
-          <strong>NOME</strong>
+          <strong>{profile.name}</strong>
         </header>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Exercitationem quaerat sunt commodi laboriosam sapiente, molestias
+          {profile.description}
         </p>
         <footer>
-          <a>
+          <a href={profile.urlGithub}>
             <GitHubLogoIcon />
             <span>Github</span>
           </a>
-          <a>
+          <a href={profile.urlCompany}>
             <IdCardIcon />
             <span>Company</span>
           </a>
-          <a>
+          <a href={profile.urlLinkedin}>
             <LinkedInLogoIcon />
             <span>Linkedin</span>
           </a>
