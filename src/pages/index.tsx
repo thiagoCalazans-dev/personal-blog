@@ -1,41 +1,47 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
-import { ContentContainer, PostsContainer, PublishedInfos, SearchInput } from "../../styles/pages/Home";
+import {
+  ContentContainer,
+  PostsContainer,
+  PublishedInfos,
+  SearchInput,
+} from "../../styles/pages/Home";
 import { PostCard } from "../components/PostCard";
 import { ProfileCard } from "../components/ProfileCard";
 import client from "../lib/apollo";
 
 export interface Profile {
-  name: string,
-  description: string,
-  urlGithub: string,
-  urlCompany: string,
-  urlLinkedin: string,
+  name: string;
+  description: string;
+  urlGithub: string;
+  urlCompany: string;
+  urlLinkedin: string;
 }
 
 export interface Post {
-  id: string,
-  name: string,
-  summary: string,
-  createdAt: string,
-  author: string,
+  id: string;
+  name: string;
+  summary: string;
+  createdAt: string;
+  slug: string;
+  author: string;
   cover: {
-    url: string,
-  }
+    url: string;
+  };
   libraries: {
-    name: string,
+    name: string;
     icon: {
-      url: string
-    }
-  }[],
+      url: string;
+    };
+  }[];
   description: {
-    markdown: string,
-  }
+    markdown: string;
+  };
 }
 
 interface HomeProps {
-  profile: Profile
-  posts: Post[]
+  profile: Profile;
+  posts: Post[];
 }
 
 export default function Home({ profile, posts }: HomeProps) {
@@ -46,45 +52,46 @@ export default function Home({ profile, posts }: HomeProps) {
         <label>Publishes</label>
         <span>{posts.length}</span>
       </PublishedInfos>
-      <form >
+      <form>
         <SearchInput type="text" placeholder="Search" />
       </form>
       <PostsContainer>
-        {posts.map((post) => <PostCard key={post.id} post={post} />)}
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
       </PostsContainer>
     </ContentContainer>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-
   const { data } = await client.query({
     query: gql`
-   query LandingPage {
-  posts {
-    name
-    createdAt
-    summary
-    libraries {
-      name
-      icon {
-        url
+      query LandingPage {
+        posts {
+          name
+          createdAt
+          slug
+          summary
+          libraries {
+            name
+            icon {
+              url
+            }
+          }
+        }
+        profiles {
+          name
+          urlCompany
+          urlGithub
+          urlLinkedin
+          description
+        }
       }
-    }
-  }
-  profiles {
-    name
-    urlCompany
-    urlGithub
-    urlLinkedin
-    description
-  }
-}
-`
+    `,
   });
 
-  console.log(data)
-
+  console.log(data);
 
   return {
     props: {
@@ -92,5 +99,4 @@ export const getStaticProps: GetStaticProps = async () => {
       posts: data.posts,
     },
   };
-}
-
+};

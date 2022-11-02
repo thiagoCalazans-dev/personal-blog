@@ -49,6 +49,7 @@ export const TitleCard = styled("div", {
     },
     footer: {
         display: "flex",
+        flex: 1,
         gap: "1.5rem",   
         justifySelf: "flex-end",  
         }})
@@ -61,3 +62,14 @@ display: "flex",
 gap: "0.5rem",
 alignItems: "center",
 })
+
+export const Technologies = styled("div", {
+    display: "flex",
+    justifyContent: "end",
+    flex: 1,
+    gap: "0.5rem",
+    justifySelf: "end",
+    alignSelf: "end",  
+     
+})
+
